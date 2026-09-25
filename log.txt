@@ -1,0 +1,1016 @@
+[root@mail ~]# mkdir -p /run/httpd-isp-php83 && /usr/sbin/httpd -t -f /etc/httpd-isp-php83/conf/httpd.conf                    
+Syntax OK                                                                                                                     
+[root@mail ~]# systemctl start httpd-isp@php83.service; systemctl status httpd-isp@php83.service --no-pager -l                
+Job for httpd-isp@php83.service failed because the control process exited with error code.                                    
+See "systemctl status httpd-isp@php83.service" and "journalctl -xe" for details.                                              
+● httpd-isp@php83.service - The Apache HTTP Server
+   Loaded: loaded (;;file://mail.ii-video.com/usr/lib/systemd/system/httpd-isp@.service/usr/lib/systemd/system/httpd-isp@.serv
+ice;;; enabled; vendor preset: disabled)                                                                                      
+   Active: failed (Result: exit-code) since Fri 2026-09-25 07:34:28 BST; 26ms ago
+  Process: 3097 ExecStart=/usr/sbin/httpd -f /etc/httpd-isp-php83/conf/httpd.conf -DFOREGROUND (code=exited, status=1/FAILURE)
+ Main PID: 3097 (code=exited, status=1/FAILURE)                                                                               
+   Status: "Reading configuration..."                                                                                         
+                                                                                                                              
+Sep 25 07:34:27 mail.ii-video.com systemd[1]: Starting The Apache HTTP Server...                                              
+Sep 25 07:34:28 mail.ii-video.com systemd[1]: httpd-isp@php83.service: Main process exited, code=exited, status=1/FAILURE     
+Sep 25 07:34:28 mail.ii-video.com systemd[1]: httpd-isp@php83.service: Failed with result 'exit-code'.                        
+Sep 25 07:34:28 mail.ii-video.com systemd[1]: Failed to start The Apache HTTP Server.
+[root@mail ~]# printf '\n=== LOG SETTINGS ===\n'; grep -RnsE '^[[:space:]]*(ErrorLog|Listen)' /etc/httpd-isp-php83/conf; print
+f '\n=== APACHE ERRORS ===\n'; tail -n 80 /etc/httpd-isp-php83/logs/error_log /var/log/httpd-isp-php83/error_log 2>&1; printf 
+'\n=== LISTENING PORTS ===\n'; ss -ltnp                                                                                       
+                                                                                                                              
+=== LOG SETTINGS ===                                                                                                          
+/etc/httpd-isp-php83/conf/httpd.conf:187:ErrorLog "logs/error_log"
+/etc/httpd-isp-php83/conf/httpd.conf:361:Listen 127.0.0.1:8082
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino221a.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino221a.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/3h3.casino.conf:10:  ErrorLog /var/www/httpd-logs/3h3.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/l7777.cfd.conf:8:    ErrorLog /var/www/httpd-logs/l7777.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ahx.casino.conf:10:  ErrorLog /var/www/httpd-logs/ahx.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino27.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino27.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/kartaslotov.cfd.conf:10:     ErrorLog /var/www/httpd-logs/kartaslotov.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino780.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino780.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino66.cfd.conf:8: ErrorLog /var/www/httpd-logs/casino66.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x4.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x4.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino71i0.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino71i0.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-q2s.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-q2s.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-deposit.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casino-deposit.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino13.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino13.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-freespins.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino-freespins.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino2.cfd.conf:10: ErrorLog /var/www/httpd-logs/casino2.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-bonusi.cam.conf:10:   ErrorLog /var/www/httpd-logs/casino-bonusi.cam.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/cih.casino.conf:10:  ErrorLog /var/www/httpd-logs/cih.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/pravilaruletki.cfd.conf:10:  ErrorLog /var/www/httpd-logs/pravilaruletki.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0023.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0023.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/vtb24-banki.online.conf:8:   ErrorLog /var/www/httpd-logs/vtb24-banki.online.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0121.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0121.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/kazinoslovar.cfd.conf:10:    ErrorLog /var/www/httpd-logs/kazinoslovar.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino23.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino23.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-slots.cam.conf:10:    ErrorLog /var/www/httpd-logs/casino-slots.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0027.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0027.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino02.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino02.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino012.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino012.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino59.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino59.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino62.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino62.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino10.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino10.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/2x2.casino.conf:10:  ErrorLog /var/www/httpd-logs/2x2.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino9500.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino9500.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/privetstvennyy-bonus.cfd.conf:10:    ErrorLog /var/www/httpd-logs/privetstvennyy-bon
+us.cfd.error.log                                                                                                              
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino54.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino54.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bonusup.casino.conf:10:      ErrorLog /var/www/httpd-logs/bonusup.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino011.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino011.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/igrovye-avtomaty-onlayn.cfd.conf:10: ErrorLog /var/www/httpd-logs/igrovye-avtomaty-o
+nlayn.cfd.error.log                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino-777.cfd.conf:10:       ErrorLog /var/www/httpd-logs/azino-777.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino049.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino049.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/go789.space.conf:10: ErrorLog /var/www/httpd-logs/go789.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino7.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino7.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/bet789.cfd.conf:10:  ErrorLog /var/www/httpd-logs/bet789.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino24.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino24.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-jackpot.cam.conf:10:  ErrorLog /var/www/httpd-logs/casino-jackpot.cam.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino43.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino43.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-wild.cfd.conf:10:     ErrorLog /var/www/httpd-logs/casino-wild.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino006.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino006.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/2026-08.casino.conf:10:      ErrorLog /var/www/httpd-logs/2026-08.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino63.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino63.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino31.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino31.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos-cash.top.conf:10:    ErrorLog /var/www/httpd-logs/casinos-cash.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinoclarity.cfd.conf:10:   ErrorLog /var/www/httpd-logs/casinoclarity.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino73.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino73.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/5957.casino.conf:10: ErrorLog /var/www/httpd-logs/5957.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/x-azino777.cfd.conf:10:      ErrorLog /var/www/httpd-logs/x-azino777.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino050.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino050.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino038.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino038.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-bonusi.cfd.conf:10:   ErrorLog /var/www/httpd-logs/casino-bonusi.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/fute7bet.com.conf:10:        ErrorLog /var/www/httpd-logs/fute7bet.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinlandmark.cfd.conf:10:    ErrorLog /var/www/httpd-logs/spinlandmark.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bets-football.com.conf:10:   ErrorLog /var/www/httpd-logs/bets-football.com.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino70.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino70.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotovedenie.cfd.conf:10:    ErrorLog /var/www/httpd-logs/slotovedenie.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ambercasino.cfd.conf:10:     ErrorLog /var/www/httpd-logs/ambercasino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-roll.cam.conf:10:     ErrorLog /var/www/httpd-logs/casino-roll.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino6.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino6.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-ahu.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-ahu.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/velvetcardroom.cfd.conf:10:  ErrorLog /var/www/httpd-logs/velvetcardroom.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino.cfd.conf:10:   ErrorLog /var/www/httpd-logs/azino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino45.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino45.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-free.cfd.conf:10:     ErrorLog /var/www/httpd-logs/casino-free.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0119.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0119.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.makeup.conf:10:      ErrorLog /var/www/httpd-logs/casinos.makeup.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.garden.conf:10:      ErrorLog /var/www/httpd-logs/casinos.garden.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/96377.cfd.conf:10:   ErrorLog /var/www/httpd-logs/96377.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/on-bets.com.conf:10: ErrorLog /var/www/httpd-logs/on-bets.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/aurorachips.cfd.conf:10:     ErrorLog /var/www/httpd-logs/aurorachips.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-casinos.cfd.conf:10:        ErrorLog /var/www/httpd-logs/azino777-casinos.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/dfq.casino.conf:10:  ErrorLog /var/www/httpd-logs/dfq.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/11110.casino.conf:8: ErrorLog /var/www/httpd-logs/11110.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/go123.cfd.conf:10:   ErrorLog /var/www/httpd-logs/go123.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-hit.cam.conf:10:      ErrorLog /var/www/httpd-logs/casino-hit.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotmechanics.cfd.conf:10:   ErrorLog /var/www/httpd-logs/slotmechanics.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/mirbarabanov.cfd.conf:10:    ErrorLog /var/www/httpd-logs/mirbarabanov.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino08.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino08.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azartnayapanorama.cfd.conf:10:       ErrorLog /var/www/httpd-logs/azartnayapanorama.
+cfd.error.log                                                                                                                 
+/etc/httpd-isp-php83/conf/vhosts/www-root/gidposlotam.cfd.conf:10:     ErrorLog /var/www/httpd-logs/gidposlotam.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-respins.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casino-respins.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/onlayn-kazino.cfd.conf:10:   ErrorLog /var/www/httpd-logs/onlayn-kazino.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/mekhanikaslotov.cfd.conf:10: ErrorLog /var/www/httpd-logs/mekhanikaslotov.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.hair.conf:10:        ErrorLog /var/www/httpd-logs/casinos.hair.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/3xl-casino.cfd.conf:10:      ErrorLog /var/www/httpd-logs/3xl-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino002.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino002.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.motorcycles.conf:10: ErrorLog /var/www/httpd-logs/casinos.motorcycles.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x1.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x1.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino2026.cfd.conf:10:       ErrorLog /var/www/httpd-logs/azino2026.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/69e.casino.conf:10:  ErrorLog /var/www/httpd-logs/69e.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino048.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino048.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-games.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-games.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/free-casino.cfd.conf:10:     ErrorLog /var/www/httpd-logs/free-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino51.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino51.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0017.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0017.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/s7s.casino.conf:10:  ErrorLog /var/www/httpd-logs/s7s.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino49.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino49.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/rouletteexplained.cfd.conf:10:       ErrorLog /var/www/httpd-logs/rouletteexplained.
+cfd.error.log                                                                                                                 
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-6d4.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-6d4.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/auroraroulette.cfd.conf:10:  ErrorLog /var/www/httpd-logs/auroraroulette.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino9200.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino9200.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinparade.cfd.conf:10:      ErrorLog /var/www/httpd-logs/spinparade.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino8.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino8.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinoruleshub.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casinoruleshub.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-respins.cam.conf:10:  ErrorLog /var/www/httpd-logs/casino-respins.cam.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelresearch.cfd.conf:10:    ErrorLog /var/www/httpd-logs/reelresearch.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino61.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino61.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-rtp.cam.conf:10:      ErrorLog /var/www/httpd-logs/casino-rtp.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-fold.cfd.conf:10:     ErrorLog /var/www/httpd-logs/casino-fold.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino9400.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino9400.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino64.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino64.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino040.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino040.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-zq9.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-zq9.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-gambling.cam.conf:10: ErrorLog /var/www/httpd-logs/casino-gambling.cam.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/bet789.space.conf:10:        ErrorLog /var/www/httpd-logs/bet789.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/oo3a8.cfd.conf:8:    ErrorLog /var/www/httpd-logs/oo3a8.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino171o.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino171o.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spin-wins.casino.conf:8:     ErrorLog /var/www/httpd-logs/spin-wins.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino456.space.conf:10:     ErrorLog /var/www/httpd-logs/casino456.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino871v.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino871v.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/zerkalo9.cam.conf:10:        ErrorLog /var/www/httpd-logs/zerkalo9.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino52.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino52.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/rotorix.casino.conf:8:       ErrorLog /var/www/httpd-logs/rotorix.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1037.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino1037.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino71.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino71.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino16.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino16.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotmathguide.cfd.conf:10:   ErrorLog /var/www/httpd-logs/slotmathguide.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/bystryy-vyvod-sredstv.cfd.conf:10:   ErrorLog /var/www/httpd-logs/bystryy-vyvod-sred
+stv.cfd.error.log                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/3678.casino.conf:10: ErrorLog /var/www/httpd-logs/3678.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelhorizon.cfd.conf:10:     ErrorLog /var/www/httpd-logs/reelhorizon.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino78.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino78.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino30.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino30.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/best2026bonus.com.conf:10:   ErrorLog /var/www/httpd-logs/best2026bonus.com.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/90an7.cfd.conf:8:    ErrorLog /var/www/httpd-logs/90an7.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino72.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino72.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino20.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino20.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/5s5.casino.conf:10:  ErrorLog /var/www/httpd-logs/5s5.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.courses.conf:10:     ErrorLog /var/www/httpd-logs/casinos.courses.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino14.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino14.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x3.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x3.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino039.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino039.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino65.cfd.conf:8: ErrorLog /var/www/httpd-logs/casino65.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinovela.cfd.conf:10:       ErrorLog /var/www/httpd-logs/spinovela.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelpromenade.cfd.conf:10:   ErrorLog /var/www/httpd-logs/reelpromenade.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-hit.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-hit.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino68.cfd.conf:8: ErrorLog /var/www/httpd-logs/casino68.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake2027.casino.conf:10:    ErrorLog /var/www/httpd-logs/stake2027.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino133.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino133.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-mobilnaya.cfd.conf:10:      ErrorLog /var/www/httpd-logs/azino777-mobilnaya
+.cfd.error.log                                                                                                                
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino79.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino79.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azartnayaorbita.cfd.conf:10: ErrorLog /var/www/httpd-logs/azartnayaorbita.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino3.cfd.conf:10: ErrorLog /var/www/httpd-logs/casino3.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x2.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x2.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0028.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0028.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotdistrict.cfd.conf:10:    ErrorLog /var/www/httpd-logs/slotdistrict.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino2.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino2.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino779.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino779.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bonus-casino.cfd.conf:10:    ErrorLog /var/www/httpd-logs/bonus-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.christmas.conf:10:   ErrorLog /var/www/httpd-logs/casinos.christmas.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-check.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-check.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino48.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino48.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotzenvo.cfd.conf:10:       ErrorLog /var/www/httpd-logs/slotzenvo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino723.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino723.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/9a0.casino.conf:10:  ErrorLog /var/www/httpd-logs/9a0.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino456.top.conf:10:       ErrorLog /var/www/httpd-logs/casino456.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/go456.space.conf:10: ErrorLog /var/www/httpd-logs/go456.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-deposit.cam.conf:10:  ErrorLog /var/www/httpd-logs/casino-deposit.cam.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/o4818.cfd.conf:8:    ErrorLog /var/www/httpd-logs/o4818.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/frispiny-bez-depozita.cfd.conf:10:   ErrorLog /var/www/httpd-logs/frispiny-bez-depoz
+ita.cfd.error.log                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-bet.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-bet.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino983n.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino983n.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-s1e.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-s1e.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino38.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino38.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino26.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino26.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotarvo.cfd.conf:10:        ErrorLog /var/www/httpd-logs/slotarvo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bonus-kazino.cfd.conf:10:    ErrorLog /var/www/httpd-logs/bonus-kazino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin08.cfd.conf:10: ErrorLog /var/www/httpd-logs/casin08.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-wild.cam.conf:10:     ErrorLog /var/www/httpd-logs/casino-wild.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bc-game-mirror.cfd.conf:10:  ErrorLog /var/www/httpd-logs/bc-game-mirror.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino123.space.conf:10:     ErrorLog /var/www/httpd-logs/casino123.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-bonus.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-bonus.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/22ic0.cfd.conf:8:    ErrorLog /var/www/httpd-logs/22ic0.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino743.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino743.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino16.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino16.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino77.cfd.conf:10: ErrorLog /var/www/httpd-logs/azino77.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-site-bonus.online.conf:10:    ErrorLog /var/www/httpd-logs/casino-site-bonus.
+online.error.log                                                                                                              
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino60.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino60.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinotermsdesk.cfd.conf:10: ErrorLog /var/www/httpd-logs/casinotermsdesk.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino46.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino46.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotbeacon.cfd.conf:10:      ErrorLog /var/www/httpd-logs/slotbeacon.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino25.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino25.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinlumio.cfd.conf:10:       ErrorLog /var/www/httpd-logs/spinlumio.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/zerkalo.cfd.conf:10: ErrorLog /var/www/httpd-logs/zerkalo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino11.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino11.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino789.top.conf:10:       ErrorLog /var/www/httpd-logs/casino789.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/kazinoatlas.cfd.conf:10:     ErrorLog /var/www/httpd-logs/kazinoatlas.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/betting-on.football.conf:10: ErrorLog /var/www/httpd-logs/betting-on.football.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino753.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino753.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino81z3.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino81z3.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino21.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino21.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/a20as.cfd.conf:8:    ErrorLog /var/www/httpd-logs/a20as.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-3h7.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-3h7.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino044.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino044.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-dpv.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-dpv.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/67-casino.com.conf:10:       ErrorLog /var/www/httpd-logs/67-casino.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1047.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino1047.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bet456.space.conf:10:        ErrorLog /var/www/httpd-logs/bet456.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/atlasazarta.cfd.conf:10:     ErrorLog /var/www/httpd-logs/atlasazarta.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinomechanics.cfd.conf:10: ErrorLog /var/www/httpd-logs/casinomechanics.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino001.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino001.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-cash.cfd.conf:10:     ErrorLog /var/www/httpd-logs/casino-cash.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin09.cfd.conf:10: ErrorLog /var/www/httpd-logs/casin09.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino25.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino25.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinarvo.cfd.conf:10:        ErrorLog /var/www/httpd-logs/spinarvo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/fute-bet.com.conf:10:        ErrorLog /var/www/httpd-logs/fute-bet.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0018.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0018.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.gay.conf:10: ErrorLog /var/www/httpd-logs/casinos.gay.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinavero.cfd.conf:10:       ErrorLog /var/www/httpd-logs/spinavero.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelharbor.cfd.conf:10:      ErrorLog /var/www/httpd-logs/reelharbor.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin013.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casin013.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino19.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino19.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotobservatory.cfd.conf:10: ErrorLog /var/www/httpd-logs/slotobservatory.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino531g.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino531g.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0025.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0025.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/sapphirereelroom.cfd.conf:10:        ErrorLog /var/www/httpd-logs/sapphirereelroom.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino55.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino55.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/midnightreels.cfd.conf:10:   ErrorLog /var/www/httpd-logs/midnightreels.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino12.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino12.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/go456.top.conf:10:   ErrorLog /var/www/httpd-logs/go456.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-sha.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-sha.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotviora.cfd.conf:10:       ErrorLog /var/www/httpd-logs/slotviora.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino101.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino101.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/40s10.cfd.conf:8:    ErrorLog /var/www/httpd-logs/40s10.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/0098s.cfd.conf:8:    ErrorLog /var/www/httpd-logs/0098s.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino76.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino76.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino9300.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino9300.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-oficialnyj-mobilnaya.cfd.conf:10:   ErrorLog /var/www/httpd-logs/azino777-o
+ficialnyj-mobilnaya.cfd.error.log                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino44.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino44.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-y31.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-y31.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-win.games.conf:10:    ErrorLog /var/www/httpd-logs/casino-win.games.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-bet.cam.conf:10:      ErrorLog /var/www/httpd-logs/casino-bet.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinpavilion.cfd.conf:10:    ErrorLog /var/www/httpd-logs/spinpavilion.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-oficialnyj-site.cfd.conf:10:        ErrorLog /var/www/httpd-logs/azino777-o
+ficialnyj-site.cfd.error.log                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-gamble.cam.conf:10:   ErrorLog /var/www/httpd-logs/casino-gamble.cam.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-raise.cam.conf:10:    ErrorLog /var/www/httpd-logs/casino-raise.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-site.cfd.conf:10:   ErrorLog /var/www/httpd-logs/azino777-site.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinterrace.cfd.conf:10:     ErrorLog /var/www/httpd-logs/spinterrace.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino50.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino50.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-roll.cfd.conf:10:     ErrorLog /var/www/httpd-logs/casino-roll.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino041.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino041.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-7az.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-7az.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelzuno.cfd.conf:10:        ErrorLog /var/www/httpd-logs/reelzuno.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/game-casino.cfd.conf:10:     ErrorLog /var/www/httpd-logs/game-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/cash-casino.cfd.conf:10:     ErrorLog /var/www/httpd-logs/cash-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casade-bet.com.conf:10:      ErrorLog /var/www/httpd-logs/casade-bet.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0030.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0030.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/crimsonchips.cfd.conf:10:    ErrorLog /var/www/httpd-logs/crimsonchips.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-mobilnaya-versiya.cfd.conf:10:      ErrorLog /var/www/httpd-logs/azino777-m
+obilnaya-versiya.cfd.error.log                                                                                                
+/etc/httpd-isp-php83/conf/vhosts/www-root/0bets0.com.conf:10:  ErrorLog /var/www/httpd-logs/0bets0.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino29.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino29.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino34.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino34.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino20.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino20.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake73.casino.conf:10:      ErrorLog /var/www/httpd-logs/stake73.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino036.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino036.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake79.casino.conf:10:      ErrorLog /var/www/httpd-logs/stake79.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/11001.casino.conf:8: ErrorLog /var/www/httpd-logs/11001.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0024.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0024.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino032.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino032.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/s8a62.cfd.conf:8:    ErrorLog /var/www/httpd-logs/s8a62.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-wager.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-wager.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino74.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino74.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-scatter.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casino-scatter.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/play123.cfd.conf:10: ErrorLog /var/www/httpd-logs/play123.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-scatter.cam.conf:10:  ErrorLog /var/www/httpd-logs/casino-scatter.cam.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/rtpnotebook.cfd.conf:10:     ErrorLog /var/www/httpd-logs/rtpnotebook.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-rtp.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-rtp.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/coppercasino.cfd.conf:10:    ErrorLog /var/www/httpd-logs/coppercasino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/f-bets.com.conf:10:  ErrorLog /var/www/httpd-logs/f-bets.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-session.cam.conf:10:  ErrorLog /var/www/httpd-logs/casino-session.cam.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/c8n6s.cfd.conf:8:    ErrorLog /var/www/httpd-logs/c8n6s.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.tattoo.conf:10:      ErrorLog /var/www/httpd-logs/casinos.tattoo.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino36h1.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino36h1.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelratinglab.cfd.conf:10:   ErrorLog /var/www/httpd-logs/reelratinglab.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/11331.casino.conf:8: ErrorLog /var/www/httpd-logs/11331.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/goldenreelhall.cfd.conf:10:  ErrorLog /var/www/httpd-logs/goldenreelhall.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelorbit.cfd.conf:10:       ErrorLog /var/www/httpd-logs/reelorbit.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-i2h.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-i2h.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/play789.space.conf:10:       ErrorLog /var/www/httpd-logs/play789.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/site-azino777.cfd.conf:10:   ErrorLog /var/www/httpd-logs/site-azino777.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-8rv.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-8rv.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino9600.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino9600.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinofactbook.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casinofactbook.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos-bonus.top.conf:10:   ErrorLog /var/www/httpd-logs/casinos-bonus.top.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/play456.cfd.conf:10: ErrorLog /var/www/httpd-logs/play456.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino80.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino80.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/39i.casino.conf:10:  ErrorLog /var/www/httpd-logs/39i.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino3.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino3.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotmivo.cfd.conf:10:        ErrorLog /var/www/httpd-logs/slotmivo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino5.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino5.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/11441.casino.conf:8: ErrorLog /var/www/httpd-logs/11441.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelcomparison.cfd.conf:10:  ErrorLog /var/www/httpd-logs/reelcomparison.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino69.best.conf:10:       ErrorLog /var/www/httpd-logs/casino69.best.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino042.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino042.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/9857a.cfd.conf:8:    ErrorLog /var/www/httpd-logs/9857a.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/sapphirechips.cfd.conf:10:   ErrorLog /var/www/httpd-logs/sapphirechips.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino15.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino15.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino53.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino53.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/play789.cfd.conf:10: ErrorLog /var/www/httpd-logs/play789.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino26.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino26.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotavenue.cfd.conf:10:      ErrorLog /var/www/httpd-logs/slotavenue.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/n9no2.cfd.conf:8:    ErrorLog /var/www/httpd-logs/n9no2.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino67.cfd.conf:8: ErrorLog /var/www/httpd-logs/casino67.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotelvo.cfd.conf:10:        ErrorLog /var/www/httpd-logs/slotelvo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-8n1.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-8n1.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x8.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x8.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/isv.casino.conf:10:  ErrorLog /var/www/httpd-logs/isv.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino2026.top.conf:10:       ErrorLog /var/www/httpd-logs/azino2026.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-freespins.cam.conf:10:        ErrorLog /var/www/httpd-logs/casino-freespins.c
+am.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelvoyage.cfd.conf:10:      ErrorLog /var/www/httpd-logs/reelvoyage.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/hqs.casino.conf:10:  ErrorLog /var/www/httpd-logs/hqs.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinzelio.cfd.conf:10:       ErrorLog /var/www/httpd-logs/spinzelio.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotovik.cfd.conf:10:        ErrorLog /var/www/httpd-logs/slotovik.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/78cc4.cfd.conf:8:    ErrorLog /var/www/httpd-logs/78cc4.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino29.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino29.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin004.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casin004.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0134.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0134.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azartnykvartal.cfd.conf:10:  ErrorLog /var/www/httpd-logs/azartnykvartal.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelgallery.cfd.conf:10:     ErrorLog /var/www/httpd-logs/reelgallery.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino03.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino03.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1045.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino1045.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/72oco.cfd.conf:8:    ErrorLog /var/www/httpd-logs/72oco.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotreviewjournal.cfd.conf:10:       ErrorLog /var/www/httpd-logs/slotreviewjournal.
+cfd.error.log                                                                                                                 
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino104.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino104.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/2c67o.cfd.conf:8:    ErrorLog /var/www/httpd-logs/2c67o.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-plays.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-plays.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino010.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino010.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/0casino.cfd.conf:10: ErrorLog /var/www/httpd-logs/0casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino035.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino035.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0016.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0016.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0022.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0022.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/11221.casino.conf:8: ErrorLog /var/www/httpd-logs/11221.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino40.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino40.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/futebolodds.com.conf:10:     ErrorLog /var/www/httpd-logs/futebolodds.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino031.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino031.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-check.cam.conf:10:    ErrorLog /var/www/httpd-logs/casino-check.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino57.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino57.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino47.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino47.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-8x5.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-8x5.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-versiya.cfd.conf:10:        ErrorLog /var/www/httpd-logs/azino777-versiya.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x9.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x9.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bet-futebol.com.conf:10:     ErrorLog /var/www/httpd-logs/bet-futebol.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino28.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino28.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinatlas.cfd.conf:10:       ErrorLog /var/www/httpd-logs/spinatlas.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/sjs.casino.conf:10:  ErrorLog /var/www/httpd-logs/sjs.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/play456.top.conf:10: ErrorLog /var/www/httpd-logs/play456.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/site-casino.cfd.conf:10:     ErrorLog /var/www/httpd-logs/site-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-free.top.conf:10:     ErrorLog /var/www/httpd-logs/casino-free.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotvolatilityguide.cfd.conf:10:     ErrorLog /var/www/httpd-logs/slotvolatilityguid
+e.cfd.error.log                                                                                                               
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-eb2.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-eb2.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake356.com.conf:10:        ErrorLog /var/www/httpd-logs/stake356.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/50433.cfd.conf:8:    ErrorLog /var/www/httpd-logs/50433.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotnuvio.cfd.conf:10:       ErrorLog /var/www/httpd-logs/slotnuvio.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino611j.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino611j.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelmora.cfd.conf:10:        ErrorLog /var/www/httpd-logs/reelmora.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino30.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino30.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/silverspinroom.cfd.conf:10:  ErrorLog /var/www/httpd-logs/silverspinroom.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/nodep-casino.cfd.conf:10:    ErrorLog /var/www/httpd-logs/nodep-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-oficialnyj-site-mobilnaya.cfd.conf:10:      ErrorLog /var/www/httpd-logs/az
+ino777-oficialnyj-site-mobilnaya.cfd.error.log                                                                                
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino789.space.conf:10:     ErrorLog /var/www/httpd-logs/casino789.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotovaya.cfd.conf:10:       ErrorLog /var/www/httpd-logs/slotovaya.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/2536.cfd.conf:8:     ErrorLog /var/www/httpd-logs/2536.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino046.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino046.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotcompass.cfd.conf:10:     ErrorLog /var/www/httpd-logs/slotcompass.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino511f.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino511f.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos-site.top.conf:10:    ErrorLog /var/www/httpd-logs/casinos-site.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino42.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino42.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-zerkalo.cam.conf:10:  ErrorLog /var/www/httpd-logs/casino-zerkalo.cam.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/xaf.casino.conf:10:  ErrorLog /var/www/httpd-logs/xaf.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/2x3.casino.conf:10:  ErrorLog /var/www/httpd-logs/2x3.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/yjy.casino.conf:10:  ErrorLog /var/www/httpd-logs/yjy.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino1.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino1.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino58.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino58.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/neonroulette.cfd.conf:10:    ErrorLog /var/www/httpd-logs/neonroulette.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino007.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino007.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ofisial.casino.conf:10:      ErrorLog /var/www/httpd-logs/ofisial.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1043.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino1043.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelreviewdesk.cfd.conf:10:  ErrorLog /var/www/httpd-logs/reelreviewdesk.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/kazinoobzor.cfd.conf:10:     ErrorLog /var/www/httpd-logs/kazinoobzor.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino13.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino13.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino07.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino07.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino23.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino23.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelvento.cfd.conf:10:       ErrorLog /var/www/httpd-logs/reelvento.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino56.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino56.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0026.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0026.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bet456.cfd.conf:10:  ErrorLog /var/www/httpd-logs/bet456.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino27.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino27.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotarchipelago.cfd.conf:10: ErrorLog /var/www/httpd-logs/slotarchipelago.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-oficialnyj.cfd.conf:10:     ErrorLog /var/www/httpd-logs/azino777-oficialny
+j.cfd.error.log                                                                                                               
+/etc/httpd-isp-php83/conf/vhosts/www-root/putevoditelslotov.cfd.conf:10:       ErrorLog /var/www/httpd-logs/putevoditelslotov.
+cfd.error.log                                                                                                                 
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino04.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino04.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/play123.space.conf:10:       ErrorLog /var/www/httpd-logs/play123.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelvario.cfd.conf:10:       ErrorLog /var/www/httpd-logs/reelvario.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.college.conf:10:     ErrorLog /var/www/httpd-logs/casinos.college.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ivoryroulette.cfd.conf:10:   ErrorLog /var/www/httpd-logs/ivoryroulette.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotreviewatlas.cfd.conf:10: ErrorLog /var/www/httpd-logs/slotreviewatlas.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino-site.cfd.conf:10:      ErrorLog /var/www/httpd-logs/azino-site.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/play456.space.conf:10:       ErrorLog /var/www/httpd-logs/play456.space.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino01.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino01.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-slots.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-slots.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotpanorama.cfd.conf:10:    ErrorLog /var/www/httpd-logs/slotpanorama.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos2026.cfd.conf:10:     ErrorLog /var/www/httpd-logs/casinos2026.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/zerkalo-onlayn-kazino.cfd.conf:10:   ErrorLog /var/www/httpd-logs/zerkalo-onlayn-kaz
+ino.cfd.error.log                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinorba.cfd.conf:10:        ErrorLog /var/www/httpd-logs/spinorba.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos-game.top.conf:10:    ErrorLog /var/www/httpd-logs/casinos-game.top.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-18e.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-18e.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/neonchipclub.cfd.conf:10:    ErrorLog /var/www/httpd-logs/neonchipclub.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ktt.casino.conf:10:  ErrorLog /var/www/httpd-logs/ktt.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ruletkoved.cfd.conf:10:      ErrorLog /var/www/httpd-logs/ruletkoved.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/3c824.cfd.conf:8:    ErrorLog /var/www/httpd-logs/3c824.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/plays-casino.cfd.conf:10:    ErrorLog /var/www/httpd-logs/plays-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-high-roller.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-high-roller
+.cfd.error.log                                                                                                                
+/etc/httpd-isp-php83/conf/vhosts/www-root/azino777-site-mobilnaya.cfd.conf:10: ErrorLog /var/www/httpd-logs/azino777-site-mobi
+lnaya.cfd.error.log                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/slz.casino.conf:10:  ErrorLog /var/www/httpd-logs/slz.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinos.yachts.conf:10:      ErrorLog /var/www/httpd-logs/casinos.yachts.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelconstellation.cfd.conf:10:       ErrorLog /var/www/httpd-logs/reelconstellation.
+cfd.error.log                                                                                                                 
+/etc/httpd-isp-php83/conf/vhosts/www-root/81sc6.cfd.conf:8:    ErrorLog /var/www/httpd-logs/81sc6.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino12k0.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino12k0.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino14.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino14.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bet123.cfd.conf:10:  ErrorLog /var/www/httpd-logs/bet123.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino41.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino41.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/xxx-casino.cfd.conf:10:      ErrorLog /var/www/httpd-logs/xxx-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-cy4.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-cy4.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/all-casino.cfd.conf:10:      ErrorLog /var/www/httpd-logs/all-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino4.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino4.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino12.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino12.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/opalcasino.cfd.conf:10:      ErrorLog /var/www/httpd-logs/opalcasino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/rouletteoddsdesk.cfd.conf:10:        ErrorLog /var/www/httpd-logs/rouletteoddsdesk.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/8i8ca.cfd.conf:8:    ErrorLog /var/www/httpd-logs/8i8ca.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino22.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino22.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-gamble.cfd.conf:10:   ErrorLog /var/www/httpd-logs/casino-gamble.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino28.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino28.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-wager.cam.conf:10:    ErrorLog /var/www/httpd-logs/casino-wager.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-itw.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-itw.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotfieldguide.cfd.conf:10:  ErrorLog /var/www/httpd-logs/slotfieldguide.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/betting-on-football.com.conf:8:      ErrorLog /var/www/httpd-logs/betting-on-footbal
+l.com.error.log                                                                                                               
+/etc/httpd-isp-php83/conf/vhosts/www-root/kazino-onlayn.cfd.conf:10:   ErrorLog /var/www/httpd-logs/kazino-onlayn.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/2i952.cfd.conf:8:    ErrorLog /var/www/httpd-logs/2i952.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ofitsialnyy-sayt-kazino.cfd.conf:10: ErrorLog /var/www/httpd-logs/ofitsialnyy-sayt-k
+azino.cfd.error.log                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino33.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino33.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino.cfd.conf:10:    ErrorLog /var/www/httpd-logs/stake-casino.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/bonus-za-registratsiyu.cfd.conf:10:  ErrorLog /var/www/httpd-logs/bonus-za-registrat
+siyu.cfd.error.log                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/bonus1l.com.conf:10: ErrorLog /var/www/httpd-logs/bonus1l.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino09.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino09.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake3.best.conf:10: ErrorLog /var/www/httpd-logs/stake3.best.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-session.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casino-session.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-jyh.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-jyh.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinlumo.cfd.conf:10:        ErrorLog /var/www/httpd-logs/spinlumo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelvanta.cfd.conf:10:       ErrorLog /var/www/httpd-logs/reelvanta.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/moonlitroulette.cfd.conf:10: ErrorLog /var/www/httpd-logs/moonlitroulette.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0129.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0129.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino21.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino21.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino9.cfd.conf:10:   ErrorLog /var/www/httpd-logs/stake-casino9.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino37.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino37.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/barabanynochi.cfd.conf:10:   ErrorLog /var/www/httpd-logs/barabanynochi.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/rubyreelsclub.cfd.conf:10:   ErrorLog /var/www/httpd-logs/rubyreelsclub.cfd.error.lo
+g                                                                                                                             
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-fold.cam.conf:10:     ErrorLog /var/www/httpd-logs/casino-fold.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino17.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino17.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino84qo.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino84qo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stavki-footbol.com.conf:10:  ErrorLog /var/www/httpd-logs/stavki-footbol.com.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casinoreviewmap.cfd.conf:10: ErrorLog /var/www/httpd-logs/casinoreviewmap.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino19.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino19.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/free-1bet.com.conf:10:       ErrorLog /var/www/httpd-logs/free-1bet.com.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino102.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino102.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino003.cfd.conf:10:       ErrorLog /var/www/httpd-logs/casino003.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-jackpot.cfd.conf:10:  ErrorLog /var/www/httpd-logs/casino-jackpot.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-i3k.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino-i3k.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/679a4.cfd.conf:8:    ErrorLog /var/www/httpd-logs/679a4.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/obzorybarabanov.cfd.conf:10: ErrorLog /var/www/httpd-logs/obzorybarabanov.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin05.cfd.conf:10: ErrorLog /var/www/httpd-logs/casin05.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino39.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino39.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino44ia.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino44ia.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino05.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino05.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/1i3.casino.conf:10:  ErrorLog /var/www/httpd-logs/1i3.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino06.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino06.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/ifd.casino.conf:10:  ErrorLog /var/www/httpd-logs/ifd.casino.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/reelnivo.cfd.conf:10:        ErrorLog /var/www/httpd-logs/reelnivo.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-high-roller.cam.conf:10:      ErrorLog /var/www/httpd-logs/casino-high-roller
+.cam.error.log                                                                                                                
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino779u.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino779u.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/stake-casino18.cfd.conf:10:  ErrorLog /var/www/httpd-logs/stake-casino18.cfd.error.l
+og                                                                                                                            
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino75.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino75.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin014.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casin014.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotfeatureguide.cfd.conf:10:        ErrorLog /var/www/httpd-logs/slotfeatureguide.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino1x0.cfd.conf:8:        ErrorLog /var/www/httpd-logs/casino1x0.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-gambling.cfd.conf:10: ErrorLog /var/www/httpd-logs/casino-gambling.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/go456.cfd.conf:10:   ErrorLog /var/www/httpd-logs/go456.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino0220.cfd.conf:10:      ErrorLog /var/www/httpd-logs/casino0220.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/spinmosaic.cfd.conf:10:      ErrorLog /var/www/httpd-logs/spinmosaic.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/slotvelio.cfd.conf:10:       ErrorLog /var/www/httpd-logs/slotvelio.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casin015.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casin015.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/velvetreels.cfd.conf:10:     ErrorLog /var/www/httpd-logs/velvetreels.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino36.cfd.conf:10:        ErrorLog /var/www/httpd-logs/casino36.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/midnightchipclub.cfd.conf:10:        ErrorLog /var/www/httpd-logs/midnightchipclub.c
+fd.error.log                                                                                                                  
+/etc/httpd-isp-php83/conf/vhosts/www-root/casino-raise.cfd.conf:10:    ErrorLog /var/www/httpd-logs/casino-raise.cfd.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/zerkalo7.cam.conf:10:        ErrorLog /var/www/httpd-logs/zerkalo7.cam.error.log
+/etc/httpd-isp-php83/conf/vhosts/www-root/navigatorazarta.cfd.conf:10: ErrorLog /var/www/httpd-logs/navigatorazarta.cfd.error.
+log                                                                                                                           
+/etc/httpd-isp-php83/conf/vhosts/www-root/amberjackpot.cfd.conf:10:    ErrorLog /var/www/httpd-logs/amberjackpot.cfd.error.log
+                                                                                                                              
+=== APACHE ERRORS ===                                                                                                         
+==> /etc/httpd-isp-php83/logs/error_log <==                                                                                   
+[Thu Sep 24 18:16:53.600809 2026] [core:notice] [pid 888] AH00052: child pid 1154534 exit signal Segmentation fault (11)      
+[Thu Sep 24 20:06:00.907986 2026] [mpm_prefork:notice] [pid 888] AH00170: caught SIGWINCH, shutting down gracefully           
+[Thu Sep 24 20:06:58.554218 2026] [suexec:notice] [pid 1099] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)    
+[Thu Sep 24 20:06:58.778143 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Thu Sep 24 20:06:58.778698 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Thu Sep 24 20:06:58.839250 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Thu Sep 24 20:06:58.839310 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Thu Sep 24 20:40:47.783432 2026] [mpm_prefork:error] [pid 1099] AH00161: server reached MaxRequestWorkers setting, consider r
+aising the MaxRequestWorkers setting                                                                                          
+[Fri Sep 25 07:10:54.023750 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:10:54.428175 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:10:54.429058 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:10:54.447971 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:10:54.448003 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:11:13.366126 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:11:13.780080 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:11:13.780748 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:11:13.800807 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:11:13.800833 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:11:31.530238 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:11:31.936731 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:11:31.937321 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:11:31.953866 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:11:31.953894 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:11:48.026479 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:11:48.475263 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:11:48.476125 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:11:48.510189 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:11:48.510212 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:06.253588 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:12:06.570387 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:12:06.570854 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:12:06.587051 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:12:06.587073 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:24.589090 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:12:24.995155 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:12:24.995893 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:12:25.014984 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:12:25.015016 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:42.638679 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:12:42.965151 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:12:42.965767 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:12:42.982901 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:12:42.982925 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:59.801909 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:13:00.314555 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:13:00.315161 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:13:00.333411 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:13:00.333439 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:13:00.343710 2026] [mpm_prefork:emerg] [pid 1617541] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.362650 2026] [mpm_prefork:emerg] [pid 1617542] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.381586 2026] [mpm_prefork:emerg] [pid 1617565] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.391325 2026] [mpm_prefork:emerg] [pid 1617564] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.391983 2026] [mpm_prefork:emerg] [pid 1617566] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:02.374201 2026] [mpm_prefork:emerg] [pid 1617662] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:03.391539 2026] [mpm_prefork:emerg] [pid 1617687] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:04.387456 2026] [mpm_prefork:emerg] [pid 1617715] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:05.402645 2026] [mpm_prefork:emerg] [pid 1617757] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:06.386584 2026] [mpm_prefork:emerg] [pid 1617793] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:07.389764 2026] [mpm_prefork:emerg] [pid 1617826] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:08.394467 2026] [mpm_prefork:emerg] [pid 1617860] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:09.403867 2026] [mpm_prefork:emerg] [pid 1617888] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:10.402285 2026] [mpm_prefork:emerg] [pid 1617916] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:11.438948 2026] [mpm_prefork:emerg] [pid 1617948] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:12.419511 2026] [mpm_prefork:emerg] [pid 1617991] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:13.413860 2026] [mpm_prefork:emerg] [pid 1618040] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:14.427813 2026] [mpm_prefork:emerg] [pid 1618072] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:15.429042 2026] [mpm_prefork:emerg] [pid 1618106] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:16.658273 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:13:16.952168 2026] [mime_magic:error] [pid 1099] (24)Too many open files: AH01515: mod_mime_magic: can't read m
+agic file /etc/httpd-isp-php83/conf/magic                                                                                     
+[Fri Sep 25 07:13:16.952480 2026] [mime:error] [pid 1099] (24)Too many open files: AH01597: could not open mime types config f
+ile /etc/mime.types.                                                                                                          
+[Fri Sep 25 07:13:16.952495 2026] [:emerg] [pid 1099] AH00020: Configuration Failed, exiting                                  
+[Fri Sep 25 07:13:17.663242 2026] [suexec:notice] [pid 1618187] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec) 
+[Fri Sep 25 07:13:17.867645 2026] [lbmethod_heartbeat:notice] [pid 1618187] AH02282: No slotmem from mod_heartmonitor         
+[Fri Sep 25 07:13:17.868216 2026] [http2:warn] [pid 1618187] AH10034: The mpm module (prefork.c) is not supported by mod_http2
+. The mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selecte
+d mpm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inacti
+ve.                                                                                                                           
+[Fri Sep 25 07:13:17.886267 2026] [core:error] [pid 1618187] (24)Too many open files: AH00099: could not create /etc/httpd-isp
+-php83/run/httpd.pid                                                                                                          
+[Fri Sep 25 07:13:17.886294 2026] [core:error] [pid 1618187] AH00100: httpd: could not log pid to file /etc/httpd-isp-php83/ru
+n/httpd.pid                                                                                                                   
+AH00015: Unable to open logs                                                                                                  
+AH00015: Unable to open logs                                                                                                  
+AH00015: Unable to open logs                                                                                                  
+AH00015: Unable to open logs                                                                                                  
+                                                                                                                              
+==> /var/log/httpd-isp-php83/error_log <==                                                                                    
+[Thu Sep 24 18:16:53.600809 2026] [core:notice] [pid 888] AH00052: child pid 1154534 exit signal Segmentation fault (11)      
+[Thu Sep 24 20:06:00.907986 2026] [mpm_prefork:notice] [pid 888] AH00170: caught SIGWINCH, shutting down gracefully           
+[Thu Sep 24 20:06:58.554218 2026] [suexec:notice] [pid 1099] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)    
+[Thu Sep 24 20:06:58.778143 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Thu Sep 24 20:06:58.778698 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Thu Sep 24 20:06:58.839250 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Thu Sep 24 20:06:58.839310 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Thu Sep 24 20:40:47.783432 2026] [mpm_prefork:error] [pid 1099] AH00161: server reached MaxRequestWorkers setting, consider r
+aising the MaxRequestWorkers setting                                                                                          
+[Fri Sep 25 07:10:54.023750 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:10:54.428175 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:10:54.429058 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:10:54.447971 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:10:54.448003 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:11:13.366126 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:11:13.780080 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:11:13.780748 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:11:13.800807 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:11:13.800833 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:11:31.530238 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:11:31.936731 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:11:31.937321 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:11:31.953866 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:11:31.953894 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:11:48.026479 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:11:48.475263 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:11:48.476125 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:11:48.510189 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:11:48.510212 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:06.253588 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:12:06.570387 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:12:06.570854 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:12:06.587051 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:12:06.587073 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:24.589090 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:12:24.995155 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:12:24.995893 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:12:25.014984 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:12:25.015016 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:42.638679 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:12:42.965151 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:12:42.965767 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:12:42.982901 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:12:42.982925 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:12:59.801909 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:13:00.314555 2026] [lbmethod_heartbeat:notice] [pid 1099] AH02282: No slotmem from mod_heartmonitor            
+[Fri Sep 25 07:13:00.315161 2026] [http2:warn] [pid 1099] AH10034: The mpm module (prefork.c) is not supported by mod_http2. T
+he mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected m
+pm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+[Fri Sep 25 07:13:00.333411 2026] [mpm_prefork:notice] [pid 1099] AH00163: Apache/2.4.37 (AlmaLinux) mpm-itk/2.4.7-04 OpenSSL/
+1.1.1k PHP/8.3.8 configured -- resuming normal operations                                                                     
+[Fri Sep 25 07:13:00.333439 2026] [core:notice] [pid 1099] AH00094: Command line: '/usr/sbin/httpd -f /etc/httpd-isp-php83/con
+f/httpd.conf -D FOREGROUND'                                                                                                   
+[Fri Sep 25 07:13:00.343710 2026] [mpm_prefork:emerg] [pid 1617541] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.362650 2026] [mpm_prefork:emerg] [pid 1617542] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.381586 2026] [mpm_prefork:emerg] [pid 1617565] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.391325 2026] [mpm_prefork:emerg] [pid 1617564] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:00.391983 2026] [mpm_prefork:emerg] [pid 1617566] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:02.374201 2026] [mpm_prefork:emerg] [pid 1617662] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:03.391539 2026] [mpm_prefork:emerg] [pid 1617687] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:04.387456 2026] [mpm_prefork:emerg] [pid 1617715] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:05.402645 2026] [mpm_prefork:emerg] [pid 1617757] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:06.386584 2026] [mpm_prefork:emerg] [pid 1617793] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:07.389764 2026] [mpm_prefork:emerg] [pid 1617826] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:08.394467 2026] [mpm_prefork:emerg] [pid 1617860] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:09.403867 2026] [mpm_prefork:emerg] [pid 1617888] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:10.402285 2026] [mpm_prefork:emerg] [pid 1617916] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:11.438948 2026] [mpm_prefork:emerg] [pid 1617948] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:12.419511 2026] [mpm_prefork:emerg] [pid 1617991] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:13.413860 2026] [mpm_prefork:emerg] [pid 1618040] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:14.427813 2026] [mpm_prefork:emerg] [pid 1618072] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:15.429042 2026] [mpm_prefork:emerg] [pid 1618106] (24)Too many open files: AH00156: Couldn't create pollset 
+in child; check system or user limits                                                                                         
+[Fri Sep 25 07:13:16.658273 2026] [mpm_prefork:notice] [pid 1099] AH00171: Graceful restart requested, doing restart          
+[Fri Sep 25 07:13:16.952168 2026] [mime_magic:error] [pid 1099] (24)Too many open files: AH01515: mod_mime_magic: can't read m
+agic file /etc/httpd-isp-php83/conf/magic                                                                                     
+[Fri Sep 25 07:13:16.952480 2026] [mime:error] [pid 1099] (24)Too many open files: AH01597: could not open mime types config f
+ile /etc/mime.types.                                                                                                          
+[Fri Sep 25 07:13:16.952495 2026] [:emerg] [pid 1099] AH00020: Configuration Failed, exiting                                  
+[Fri Sep 25 07:13:17.663242 2026] [suexec:notice] [pid 1618187] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec) 
+[Fri Sep 25 07:13:17.867645 2026] [lbmethod_heartbeat:notice] [pid 1618187] AH02282: No slotmem from mod_heartmonitor         
+[Fri Sep 25 07:13:17.868216 2026] [http2:warn] [pid 1618187] AH10034: The mpm module (prefork.c) is not supported by mod_http2
+. The mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selecte
+d mpm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inacti
+ve.                                                                                                                           
+[Fri Sep 25 07:13:17.886267 2026] [core:error] [pid 1618187] (24)Too many open files: AH00099: could not create /etc/httpd-isp
+-php83/run/httpd.pid                                                                                                          
+[Fri Sep 25 07:13:17.886294 2026] [core:error] [pid 1618187] AH00100: httpd: could not log pid to file /etc/httpd-isp-php83/ru
+n/httpd.pid                                                                                                                   
+AH00015: Unable to open logs                                                                                                  
+AH00015: Unable to open logs                                                                                                  
+AH00015: Unable to open logs                                                                                                  
+AH00015: Unable to open logs                                                                                                  
+                                                                                                                              
+=== LISTENING PORTS ===                                                                                                       
+State           Recv-Q          Send-Q                     Local Address:Port                      Peer Address:Port          
+Process                                                                                                                       
+LISTEN          0               10                         185.115.33.18:53                             0.0.0.0:*             
+ users:(("named",pid=1007,fd=23))                                                                                             
+LISTEN          0               10                             127.0.0.1:53                             0.0.0.0:*             
+ users:(("named",pid=1007,fd=22))                                                                                             
+LISTEN          0               128                              0.0.0.0:22                             0.0.0.0:*             
+ users:(("sshd",pid=741,fd=3))                                                                                                
+LISTEN          0               128                            127.0.0.1:953                            0.0.0.0:*             
+ users:(("named",pid=1007,fd=24))                                                                                             
+LISTEN          0               20                               0.0.0.0:25                             0.0.0.0:*             
+ users:(("exim",pid=752,fd=5))                                                                                                
+LISTEN          0               511                        185.115.33.18:443                            0.0.0.0:*             
+ users:(("nginx",pid=2255,fd=1087),("nginx",pid=2254,fd=1087),("nginx",pid=2253,fd=1087),("nginx",pid=2252,fd=1087),("nginx",p
+id=1358,fd=1087))                                                                                                             
+LISTEN          0               500                        185.115.33.18:1500                           0.0.0.0:*             
+ users:(("ihttpd",pid=1116,fd=5))                                                                                             
+LISTEN          0               511                        185.115.33.18:1501                           0.0.0.0:*             
+ users:(("nginx",pid=2255,fd=1085),("nginx",pid=2254,fd=1085),("nginx",pid=2253,fd=1085),("nginx",pid=2252,fd=1085),("nginx",p
+id=1358,fd=1085))                                                                                                             
+LISTEN          0               128                            127.0.0.1:54369                          0.0.0.0:*             
+ users:(("shellinaboxd",pid=2765,fd=4))                                                                                       
+LISTEN          0               100                              0.0.0.0:993                            0.0.0.0:*             
+ users:(("dovecot",pid=868,fd=38))                                                                                            
+LISTEN          0               100                              0.0.0.0:995                            0.0.0.0:*             
+ users:(("dovecot",pid=868,fd=22))                                                                                            
+LISTEN          0               151                            127.0.0.1:3306                           0.0.0.0:*             
+ users:(("mysqld",pid=844,fd=34))                                                                                             
+LISTEN          0               20                               0.0.0.0:587                            0.0.0.0:*             
+ users:(("exim",pid=752,fd=9))                                                                                                
+LISTEN          0               100                              0.0.0.0:110                            0.0.0.0:*             
+ users:(("dovecot",pid=868,fd=21))                                                                                            
+LISTEN          0               100                              0.0.0.0:143                            0.0.0.0:*             
+ users:(("dovecot",pid=868,fd=37))                                                                                            
+LISTEN          0               511                              0.0.0.0:80                             0.0.0.0:*             
+ users:(("nginx",pid=2255,fd=1086),("nginx",pid=2254,fd=1086),("nginx",pid=2253,fd=1086),("nginx",pid=2252,fd=1086),("nginx",p
+id=1358,fd=1086))                                                                                                             
+LISTEN          0               511                            127.0.0.1:8080                           0.0.0.0:*             
+ users:(("httpd",pid=2689,fd=3),("httpd",pid=2214,fd=3),("httpd",pid=2208,fd=3),("httpd",pid=2206,fd=3),("httpd",pid=2205,fd=3
+),("httpd",pid=2204,fd=3),("httpd",pid=1095,fd=3))                                                                            
+LISTEN          0               20                               0.0.0.0:465                            0.0.0.0:*             
+ users:(("exim",pid=752,fd=7))                                                                                                
+LISTEN          0               128                                    *:21                                   *:*             
+ users:(("proftpd",pid=1178,fd=0))                                                                                            
+LISTEN          0               10                                  [::]:53                                [::]:*             
+ users:(("named",pid=1007,fd=21))                                                                                             
+LISTEN          0               128                                 [::]:22                                [::]:*             
+ users:(("sshd",pid=741,fd=4))                                                                                                
+LISTEN          0               128                                [::1]:953                               [::]:*             
+ users:(("named",pid=1007,fd=25))                                                                                             
+LISTEN          0               20                                  [::]:25                                [::]:*             
+ users:(("exim",pid=752,fd=4))                                                                                                
+LISTEN          0               70                                     *:33060                                *:*             
+ users:(("mysqld",pid=844,fd=21))                                                                                             
+LISTEN          0               20                                  [::]:587                               [::]:*             
+ users:(("exim",pid=752,fd=8))                                                                                                
+LISTEN          0               511                                 [::]:80                                [::]:*             
+ users:(("nginx",pid=2255,fd=1088),("nginx",pid=2254,fd=1088),("nginx",pid=2253,fd=1088),("nginx",pid=2252,fd=1088),("nginx",p
+id=1358,fd=1088))                                                                                                             
+LISTEN          0               20                                  [::]:465                               [::]:*             
+ users:(("exim",pid=752,fd=6))                                                                                                
+[root@mail ~]#               
